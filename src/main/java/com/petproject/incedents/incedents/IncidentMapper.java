@@ -1,17 +1,17 @@
 package com.petproject.incedents.incedents;
 
-import com.petproject.incedents.incedents.dto.IncidentRequest;
-import com.petproject.incedents.incedents.dto.IncidentResponse;
+import com.petproject.incedents.incedents.dto.*;
 import org.springframework.stereotype.Service;
 
 @Service
 public class IncidentMapper {
 
-    public IncidentResponse toIncidentResponse(Incident incident) {
+    public IncidentResponse toIncidentResponse(Incident incident, Boolean created) {
         return IncidentResponse.builder()
                 .message(incident.getMessage())
                 .coordinate(incident.getCoordinate())
                 .status(incident.getStatus())
+                .isCreated(created)
                 .build();
     }
 
@@ -23,23 +23,34 @@ public class IncidentMapper {
                 .build();
     }
 
-    public Incident updateIncident(Incident incident, IncidentRequest request) {
-        if (request.message() != null && !request.message().isBlank()) {
+    public void updateIncident(Incident incident, IncidentRequest request) {
+        if (!request.message().equals(incident.getMessage())) {
             incident.setMessage(request.message());
         }
-        if (request.coordinate() != null && !request.coordinate().isBlank()) {
+        if (!request.coordinate().equals(incident.getCoordinate())) {
             incident.setCoordinate(request.coordinate());
         }
-        if (request.status() != null) {
+        if (request.status() != incident.getStatus()) {
             incident.setStatus(request.status());
         }
-        return incident;
     }
 
-    public Incident updateIncidentStatus(Incident incident, IncidentRequest request) {
-        if (request.status() != null) {
+    public void updateIncidentStatus(Incident incident, IncidentRequestStatus request) {
+        if (request.status() != incident.getStatus()) {
             incident.setStatus(request.status());
         }
-        return incident;
+    }
+
+    public void updateCoordinate(Incident incident, IncidentRequestCoordinate request) {
+        if (!request.coordinate().equals(incident.getCoordinate())) {
+            incident.setCoordinate(request.coordinate());
+        }
+    }
+
+
+    public void updateMessage(Incident incident, IncidentRequestMessage request) {
+        if (!request.message().equals(incident.getMessage())) {
+            incident.setMessage(request.message());
+        }
     }
 }

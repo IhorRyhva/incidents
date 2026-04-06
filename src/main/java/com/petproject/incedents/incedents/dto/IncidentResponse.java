@@ -7,5 +7,6 @@ import lombok.Builder;
 public record IncidentResponse (
         String coordinate,
         String message,
-        Status status) {
+        Status status,
+        Boolean isCreated) {
 }

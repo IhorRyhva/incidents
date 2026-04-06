@@ -4,17 +4,9 @@ import com.petproject.incedents.incedents.Status;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-
-public record IncidentRequest(
+public record IncidentRequestStatus(
         @NotNull
         @NotEmpty
-        String coordinate,
-
-        @NotNull
-        @NotEmpty
-        String message,
-
-        @NotNull
         Status status
 ) {
 }
