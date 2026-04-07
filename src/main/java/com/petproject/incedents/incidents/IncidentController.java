@@ -1,6 +1,6 @@
-package com.petproject.incedents.incedents;
+package com.petproject.incedents.incidents;
 
-import com.petproject.incedents.incedents.dto.*;
+import com.petproject.incedents.incidents.dto.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,7 +33,7 @@ public class IncidentController {
 
     @PatchMapping("/incidents/{id}/status")
     public ResponseEntity<IncidentResponse> patchIncidentStatus (@PathVariable Long id, @RequestBody @Valid IncidentRequestStatus request) {
-        return ResponseEntity.ok(this.incidentService.updateStatusIncident(id, request));
+        return ResponseEntity.ok(this.incidentService.updateIncidentType(id, request));
     }
 
     @PatchMapping("/incidents/{id}/coordinate")

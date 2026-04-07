@@ -1,7 +1,9 @@
-package com.petproject.incedents.incedents;
+package com.petproject.incedents.incidents;
 
-import com.petproject.incedents.incedents.dto.*;
+import com.petproject.incedents.incidents.dto.*;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class IncidentMapper {
@@ -10,8 +12,9 @@ public class IncidentMapper {
         return IncidentResponse.builder()
                 .message(incident.getMessage())
                 .coordinate(incident.getCoordinate())
-                .status(incident.getStatus())
+                .incidentType(incident.getIncidentType())
                 .isCreated(created)
+                .createdAt(incident.getCreatedAt())
                 .build();
     }
 
@@ -19,7 +22,8 @@ public class IncidentMapper {
         return Incident.builder()
                 .message(request.message())
                 .coordinate(request.coordinate())
-                .status(request.status())
+                .incidentType(request.incidentType())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 
@@ -30,14 +34,14 @@ public class IncidentMapper {
         if (!request.coordinate().equals(incident.getCoordinate())) {
             incident.setCoordinate(request.coordinate());
         }
-        if (request.status() != incident.getStatus()) {
-            incident.setStatus(request.status());
+        if (request.incidentType() != incident.getIncidentType()) {
+            incident.setIncidentType(request.incidentType());
         }
     }
 
-    public void updateIncidentStatus(Incident incident, IncidentRequestStatus request) {
-        if (request.status() != incident.getStatus()) {
-            incident.setStatus(request.status());
+    public void updateIncidentType(Incident incident, IncidentRequestStatus request) {
+        if (request.incidentType() != incident.getIncidentType()) {
+            incident.setIncidentType(request.incidentType());
         }
     }
 

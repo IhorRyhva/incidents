@@ -1,0 +1,13 @@
+version: '1.0'
+services:
+  db:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_DB: incidents
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1111
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql

@@ -1,7 +1,7 @@
-package com.petproject.incedents.incedents;
+package com.petproject.incedents.incidents;
 
 import com.petproject.incedents.exceptions.NotFoundResourceException;
-import com.petproject.incedents.incedents.dto.*;
+import com.petproject.incedents.incidents.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -41,10 +41,10 @@ public class IncidentService {
         return this.incidentMapper.toIncidentResponse(incident, false);
     }
 
-    public IncidentResponse updateStatusIncident(Long id, IncidentRequestStatus request) {
+    public IncidentResponse updateIncidentType(Long id, IncidentRequestStatus request) {
         Incident incident = this.incidentRepository.findById(id).orElseThrow(() -> new NotFoundResourceException(id));
 
-        this.incidentMapper.updateIncidentStatus(incident, request);
+        this.incidentMapper.updateIncidentType(incident, request);
         this.incidentRepository.save(incident);
         return this.incidentMapper.toIncidentResponse(incident, false);
 

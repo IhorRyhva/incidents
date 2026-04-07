@@ -1,11 +1,10 @@
-package com.petproject.incedents.incedents.dto;
+package com.petproject.incedents.incidents.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public record IncidentRequestCoordinate (
         @NotNull
-        @NotEmpty
-        String coordinate
+        Coordinate coordinate
 ) {
 }

@@ -1,12 +1,12 @@
-package com.petproject.incedents.incedents.dto;
+package com.petproject.incedents.incidents.dto;
 
-import com.petproject.incedents.incedents.Status;
+import com.petproject.incedents.incidents.IncidentType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public record IncidentRequestStatus(
         @NotNull
         @NotEmpty
-        Status status
+        IncidentType incidentType
 ) {
 }
