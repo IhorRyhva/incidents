@@ -1,6 +1,7 @@
 package com.petproject.incedents.incidents;
 
 import com.petproject.incedents.incidents.dto.Coordinate;
+import com.petproject.incedents.incidents.dto.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +31,11 @@ public class Incident {
     @Enumerated(EnumType.STRING)
     private IncidentType incidentType;
 
+    private Integer countOfReport;
+
     @NotNull
     private LocalDateTime createdAt;
+
+    @Enumerated(EnumType.STRING)
+    Status status;
 }

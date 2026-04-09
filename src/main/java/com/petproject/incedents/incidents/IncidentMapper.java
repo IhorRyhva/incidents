@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
 @Service
 public class IncidentMapper {
 
-    public IncidentResponse toIncidentResponse(Incident incident, Boolean created) {
+    public IncidentResponse toIncidentResponse(Incident incident, Integer countOfReport) {
         return IncidentResponse.builder()
                 .message(incident.getMessage())
                 .coordinate(incident.getCoordinate())
                 .incidentType(incident.getIncidentType())
-                .isCreated(created)
+                .countOfReport(countOfReport)
                 .createdAt(incident.getCreatedAt())
                 .build();
     }

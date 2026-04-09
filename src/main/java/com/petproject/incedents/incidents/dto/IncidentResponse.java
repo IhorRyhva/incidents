@@ -11,6 +11,7 @@ public record IncidentResponse (
         Coordinate coordinate,
         String message,
         IncidentType incidentType,
-        Boolean isCreated,
-        LocalDateTime createdAt) {
+        Integer countOfReport,
+        LocalDateTime createdAt,
+        Status status) {
 }

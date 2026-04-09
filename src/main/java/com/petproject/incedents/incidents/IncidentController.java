@@ -20,7 +20,7 @@ public class IncidentController {
     @PostMapping("/incidents")
     public ResponseEntity<IncidentResponse> createIncident (@RequestBody @Valid IncidentRequest request) {
         IncidentResponse response = this.incidentService.create(request);
-        if (response.isCreated()) {
+        if (response.countOfReport() == 1) {
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         }
         return ResponseEntity.ok(response);

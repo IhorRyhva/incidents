@@ -22,4 +22,12 @@ public class Coordinate {
             throw new InvalidCoordinatesException(String.format("Invalid coordinates: latitude-%f, longitude-%f"), latitude, longitude);
         }
     }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
 }
